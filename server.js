@@ -264,10 +264,12 @@ async function apiStatus() {
 
 async function apiHome() {
   const home = scheduler.cachedHome();
-  if (!home) {
+  const maxAge = 10 * 60 * 1000;
+  const stale = !home || !home.generatedAt || Date.now() - Date.parse(home.generatedAt) > maxAge;
+  if (stale) {
     const fresh = await scheduler.refreshHome();
-    if (fresh.skipped) return { pending: true };
-    return scheduler.cachedHome();
+    if (fresh.skipped) return home || { pending: true };
+    return scheduler.cachedHome() || home;
   }
   return home;
 }
@@ -519,9 +521,18 @@ const server = http.createServer((req, res) => {
   });
 });
 
-function boot() {
+// Dipakai oleh handler serverless (api/index.js) yang tidak menjalankan boot().
+let initialized = false;
+function init() {
+  if (initialized) return catalog.size();
+  initialized = true;
   const size = catalog.load();
-  console.log(`[boot] indeks katalog dimuat: ${size} anime`);
+  console.log(`[init] indeks katalog dimuat: ${size} anime`);
+  return size;
+}
+
+function boot() {
+  init();
   const d = donghua.stats();
   console.log(`[boot] donghua tersimpan: ${d.total} judul (update: ${d.fetchedAt || 'belum ada'})`);
   server.listen(PORT, HOST, () => {
@@ -532,4 +543,4 @@ function boot() {
 
 if (require.main === module) boot();
 
-module.exports = { server, boot, apiStatus, getDetail };
+module.exports = { server, boot, init, router, apiStatus, getDetail };

@@ -55,6 +55,19 @@ Paket Craftvel `solo` membatasi 100 resolusi episode per bulan. Pemutar memakai 
 - `GET /api/schedule` jadwal 7 hari
 - `GET /api/refresh?layer=home|episodes|donghua|catalog` paksa pembaruan
 
+## Deploy
+
+Repo: https://github.com/dikah4300/anime-nusantara
+
+Hosting: Render (Web Service, Node, plan free, region Singapore) lewat `render.yaml` di root repo.
+
+1. Buka https://render.com/deploy?repo=https://github.com/dikah4300/anime-nusantara
+2. Sign in with GitHub, izinkan Render membaca repo `anime-nusantara`.
+3. Saat blueprint meminta `CRAFTVEL_API_KEY`, tempel kunci 40 karakter dari berkas `.env` di mesin lokal.
+4. Apply. Build tanpa dependensi, start `node server.js`, health check `/api/health`.
+
+Catatan Render free: instance tidur setelah 15 menit tanpa trafik (permintaan pertama setelahnya butuh ~30-50 detik), disk bersifat sementara (cache `data/` hilang saat redeploy, dibangun ulang otomatis), dan `HOST` wajib `0.0.0.0` (sudah diset di `render.yaml`).
+
 ## Struktur
 
 ```

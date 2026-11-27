@@ -1,0 +1,13 @@
+# kunci API jangan pernah masuk repo
+.env
+.env.*
+
+# log runtime
+logs/
+
+# dependensi (proyek ini tanpa dependensi, jaga-jaga)
+node_modules/
+
+# berkas OS / editor
+.DS_Store
+Thumbs.db

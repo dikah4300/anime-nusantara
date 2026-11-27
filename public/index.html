@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anime Nusantara - Streaming Anime Sub Indo &amp; Donghua</title>
+<meta name="description" content="Katalog anime sub Indo lengkap dengan daftar episode, jadwal rilis, pembaruan ongoing otomatis, dan katalog donghua dengan tautan platform resmi.">
+<meta name="theme-color" content="#0b0d10">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Lompat ke konten</a>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="/" data-link>
+      <span class="brand-mark" aria-hidden="true">AN</span>
+      <span class="brand-text">Anime<strong>Nusantara</strong></span>
+    </a>
+
+    <nav class="main-nav" aria-label="Navigasi utama">
+      <a href="/" data-link data-nav="home">Beranda</a>
+      <a href="/anime" data-link data-nav="anime">Anime</a>
+      <a href="/ongoing" data-link data-nav="ongoing">Ongoing</a>
+      <a href="/donghua" data-link data-nav="donghua">Donghua</a>
+      <a href="/jadwal" data-link data-nav="jadwal">Jadwal</a>
+      <a href="/koleksi" data-link data-nav="koleksi">Koleksi</a>
+    </nav>
+
+    <form class="search-form" id="global-search" role="search">
+      <label class="sr-only" for="q">Cari anime atau donghua</label>
+      <input id="q" name="q" type="search" placeholder="Cari judul anime..." autocomplete="off" enterkeyhint="search">
+      <button type="submit" aria-label="Cari">Cari</button>
+    </form>
+  </div>
+</header>
+
+<main id="main" tabindex="-1">
+  <div class="wrap" id="view">
+    <div class="loading-block" role="status">
+      <div class="skeleton-line w40"></div>
+      <div class="skeleton-line w70"></div>
+      <p class="muted">Memuat data katalog...</p>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p class="footer-note">
+      Katalog anime dan pemutarnya memakai Craftvel API (lisensi platform, kualitas hingga 720p).
+      Katalog donghua memakai metadata AniList dan mengarahkan ke platform resmi pemegang lisensi.
+      Situs ini tidak menyimpan berkas video.
+    </p>
+    <p class="footer-status" id="footer-status">Memeriksa status server...</p>
+  </div>
+</footer>
+
+<script src="/app.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: anime-nusantara
+    runtime: node
+    plan: free
+    region: singapore
+    branch: main
+    buildCommand: echo "tanpa dependensi"
+    startCommand: node server.js
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: HOST
+        value: 0.0.0.0
+      - key: NODE_VERSION
+        value: 22.11.0
+      - key: CRAFTVEL_API_KEY
+        sync: false
